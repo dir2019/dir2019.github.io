@@ -60,6 +60,31 @@ a:hover {
 	padding:.5em 2em;
 }
 
+.sponsors {
+	padding: 0;
+	margin: 0 auto;
+}
+
+.sponsors#block {
+	padding: .5em 0;
+}
+
+ul#horizontal {
+	list-style: none;
+	width: 100%;
+	padding: 0 0 20px 0;
+	}
+
+ul#horizontal li {
+		display: inline;
+	}
+
+.sponsors img {
+	max-height: 100px;
+	padding: 5px 10px;
+}
+
+
 ul li {
 	font-size: calc(10px + 1.25vw);
 	list-style-type: none;
