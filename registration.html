@@ -1,0 +1,59 @@
+<head>
+	<link href="./dir.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel='shortcut icon' type='image/x-icon' href='favicon.png' />
+	<title>DIR 2019 ⚡ Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</title>
+</head>
+
+<body>
+
+<div id="content">
+	<div id="block">
+		<div class="logo">
+			<span class="pad-right">DIR</span>
+			<span class="img"><img src="img/lightning.svg" /></span>
+			<span class="pad-left">19</span>
+		</div>
+	</div>
+	<div id="block">
+		<p>The 18th Dutch-Belgian Information Retrieval Workshop</p>
+		<p>Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</p>
+	</div>
+  
+	<div id="block" class="text">
+    <form onsubmit='return false;'>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="dinner">
+        <label class="form-check-label" for="dinner">Staying for dinner</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+	</div>
+</div>
+
+<script language="javascript">
+$('form').on('submit', function() {
+	var formObject = {};
+	$('form *').each(function(i, d) {
+  	if(d.id)
+	    formObject[d.id] = d.value;
+  });
+  
+  amount = $('#dinner')[0].checked ? 50 : 25;
+  encoded = btoa(JSON.stringify(formObject));
+  url = 'https://bunq.me/DIR2019/' + amount + '/' + encoded;
+  
+  $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
+  open(url);
+});
+</script>
+</body>
