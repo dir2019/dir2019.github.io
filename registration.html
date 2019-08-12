@@ -40,21 +40,22 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="javascript">
-$('form').on('submit', function() {
-	var formObject = {};
-	$('form *').each(function(i, d) {
-  	if(d.id)
-	    formObject[d.id] = d.value;
+$().ready(function() {
+  $('form').on('submit', function() {
+    var formObject = {};
+    $('form *').each(function(i, d) {
+      if(d.id) formObject[d.id] = d.value;
+    });
+  
+    amount = $('#dinner')[0].checked ? 50 : 25;
+    encoded = btoa(JSON.stringify(formObject));
+    url = 'https://bunq.me/DIR2019/' + amount + '/' + encoded;
+  
+    $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
+    open(url);
   });
-  
-  amount = $('#dinner')[0].checked ? 50 : 25;
-  encoded = btoa(JSON.stringify(formObject));
-  url = 'https://bunq.me/DIR2019/' + amount + '/' + encoded;
-  
-  $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
-  open(url);
 });
 </script>
 </body>
