@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./dir.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.png'/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>DIR 2019 ⚡ Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</title>
+</head>
+
+<body>
+
+<div id="content">
+    <div id="block">
+        <div class="logo">
+            <span class="pad-right">DIR</span>
+            <span class="img"><img src="img/lightning.svg"/></span>
+            <span class="pad-left">19</span>
+        </div>
+    </div>
+    <div id="block">
+        <p>The 18th Dutch-Belgian Information Retrieval Workshop</p>
+        <p>Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</p>
+    </div>
+
+    <div id="form" class="text">
+        <form onsubmit='return false;'>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="name">Affiliation</label>
+                <input type="text" class="form-control" id="affiliation" placeholder="Affiliation">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                       placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.
+                </small>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="siks">
+                <label class="form-check-label" for="siks">SIKS student member</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="sponsor">
+                <label class="form-check-label" for="sponsor">Free sponsor ticket</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="dinner">
+                <label class="form-check-label" for="dinner">Staying for dinner</label>
+            </div>
+            <div class="form-group">
+                <label for="name">Dietary restrictions</label>
+                <input type="text" class="form-control" id="dietary" placeholder="vegetarian, halal, etc">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script language="javascript">
+    $().ready(function () {
+        $('form').on('submit', function () {
+            var formObject = {};
+            var registration_fee = 25;
+            var dinner_fee = 30;
+
+            var amount = registration_fee;
+            $('form *').each(function (i, d) {
+                if (d.id) {
+                    if (d.id === 'dinner') {
+                        if (d.checked) {
+                            amount += dinner_fee;
+                            formObject[d.id] = 'yes';
+                        } else {
+                            formObject[d.id] = 'no';
+                        }
+                    } else if (d.id === 'siks') {
+                        if (d.checked) {
+                            amount -= registration_fee;
+                            formObject[d.id] = 'yes';
+                        } else {
+                            formObject[d.id] = 'no';
+                        }
+                    } else if (d.id === 'sponsor') {
+                        if (d.checked) {
+                            amount -= registration_fee;
+                            formObject[d.id] = 'yes';
+                        } else {
+                            formObject[d.id] = 'no';
+                        }
+                    } else {
+                        formObject[d.id] = d.value;
+                    }
+                }
+            });
+
+            amount = amount <= 0 ? 0.01 : amount;
+            formObject['amount'] = amount;
+
+            var encoded = btoa(JSON.stringify(formObject));
+            var url = 'https://bunq.me/DIR2019/' + amount + '/Pay%20to%20register%20' + encoded;
+
+            $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
+            open(url);
+        });
+    });
+</script>
+</body>
+</html>
