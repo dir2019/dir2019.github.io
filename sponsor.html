@@ -8,23 +8,13 @@
 
 <body>
 
-<div id="content">
+<script>$(function(){$("#nav-placeholder").load("nav.html");$("#logo-placeholder").load("logo.html");});</script>
 
+<div id="content">
 	<div id="nav-placeholder"></div>
-	<script>$(function(){$("#nav-placeholder").load("nav.html");});</script>
 
 	<div class="main">
-		<div id="block">
-			<div class="logo">
-				<span class="pad-right">DIR</span>
-				<span class="img"><img src="img/lightning.svg" /></span>
-				<span class="pad-left">19</span>
-			</div>
-		</div>
-		<div id="block">
-			<p>The 18th Dutch-Belgian Information Retrieval Workshop</p>
-			<p>Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</p>
-		</div>
+		<div id="logo-placeholder"></div>
 	  
 		<div id="block" class="text">
 			<h1>Call for sponsors</h1>
@@ -39,6 +29,6 @@
 			<p>If you're interested in sponsoring DIR, please reach out to us through: <a href="mailto:dir2019@graus.nu?subject=Sponsoring DIR 2019">dir2019@graus.nu</a>.</p>
 		</div>
 	</div>
-	
+
 </div>
 </body>
