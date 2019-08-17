@@ -5,6 +5,7 @@ body {
 	font-weight: bold;
 	font-size: calc(16px + 2vw);
 	text-align: center;
+	margin:0;
 }
 
 p {
@@ -34,6 +35,10 @@ a:hover {
 #content {
 	width: 70%;
 	margin:0 auto;
+}
+
+#content .main {
+	padding-top: 1.5em;
 }
 
 #content .logo {
@@ -69,13 +74,36 @@ a:hover {
 	padding: .5em 0;
 }
 
-ul#horizontal {
+#nav-placeholder {
+	position: fixed;
+	padding: 0;
+	margin: 0 auto;
+	width: 70%;
+	background: white;
+	padding: .25em 0;
+	border-bottom: 10px solid red;
+}
+
+#nav-placeholder a {
+	text-transform: uppercase;
+	padding: 0 .5em;
+}
+
+ul#horizontal, ul#nav {
 	list-style: none;
 	width: 100%;
-	padding: 0 0 20px 0;
 	}
 
-ul#horizontal li {
+ul#nav {
+	padding: 0;
+	margin: 0;
+}
+
+ul#horizontal {
+	padding: 0 0 20px 0;
+}
+
+ul#horizontal li, ul#nav li {
 		display: inline;
 	}
 
