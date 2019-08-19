@@ -66,11 +66,12 @@
 <script language="javascript">
     $().ready(function () {
         $('form').on('submit', function () {
-            var formObject = {};
-            var registration_fee = 25;
-            var dinner_fee = 30;
+            const registration_fee = 25;
+            const dinner_fee = 30;
+            const min_fee = 0.01;
 
-            var amount = registration_fee;
+            let formObject = {};
+            let amount = registration_fee;
             $('form *').each(function (i, d) {
                 if (d.id) {
                     if (d.id === 'dinner') {
@@ -100,11 +101,11 @@
                 }
             });
 
-            amount = amount <= 0 ? 0.01 : amount;
+            amount = amount <= min_fee ? min_fee : amount;
             formObject['amount'] = amount;
 
-            var encoded = btoa(JSON.stringify(formObject));
-            var url = 'https://bunq.me/DIR2019/' + amount + '/Pay%20to%20register%20' + encoded;
+            const encoded = btoa(JSON.stringify(formObject));
+            const url = 'https://bunq.me/DIR2019/' + amount + '/Pay%20to%20register%20' + encoded;
 
             $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
             open(url);
