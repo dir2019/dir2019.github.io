@@ -66,48 +66,58 @@
 <script language="javascript">
     $().ready(function () {
         $('form').on('submit', function () {
-            const registration_fee = 25;
-            const dinner_fee = 30;
-            const min_fee = 0.01;
+            const REGISTRATION_FEE = 25;
+            const DINNER_FEE = 30;
+            const MINIMAL_FEE = 0.01;
 
             let formObject = {};
-            let amount = registration_fee;
+            let amount = REGISTRATION_FEE;
             $('form *').each(function (i, d) {
-                if (d.id) {
-                    if (d.id === 'dinner') {
-                        if (d.checked) {
-                            amount += dinner_fee;
-                            formObject[d.id] = 'yes';
-                        } else {
-                            formObject[d.id] = 'no';
-                        }
-                    } else if (d.id === 'siks') {
-                        if (d.checked) {
-                            amount -= registration_fee;
-                            formObject[d.id] = 'yes';
-                        } else {
-                            formObject[d.id] = 'no';
-                        }
-                    } else if (d.id === 'sponsor') {
-                        if (d.checked) {
-                            amount -= registration_fee;
-                            formObject[d.id] = 'yes';
-                        } else {
-                            formObject[d.id] = 'no';
-                        }
-                    } else {
-                        formObject[d.id] = d.value;
-                    }
+                if (!d.id) {
+                    return
                 }
+
+                if (d.id === 'dinner') {
+                    if (d.checked) {
+                        amount += DINNER_FEE;
+                        formObject[d.id] = 'yes';
+                    } else {
+                        formObject[d.id] = 'no';
+                    }
+                    return
+                }
+
+                if (d.id === 'siks') {
+                    if (d.checked) {
+                        amount -= REGISTRATION_FEE;
+                        formObject[d.id] = 'yes';
+                    } else {
+                        formObject[d.id] = 'no';
+                    }
+                    return
+                }
+
+                if (d.id === 'sponsor') {
+                    if (d.checked) {
+                        amount -= REGISTRATION_FEE;
+                        formObject[d.id] = 'yes';
+                    } else {
+                        formObject[d.id] = 'no';
+                    }
+                    return
+                }
+
+                formObject[d.id] = d.value;
+
             });
 
-            amount = amount <= min_fee ? min_fee : amount;
+            amount = amount <= MINIMAL_FEE ? MINIMAL_FEE : amount;
             formObject['amount'] = amount;
 
             const encoded = btoa(JSON.stringify(formObject));
             const url = 'https://bunq.me/DIR2019/' + amount + '/Pay%20to%20register%20' + encoded;
 
-            $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
+            $('form button')[0].outerHTML = '<br /><b>Pay with <a href="' + url + '">Bunq</a>.</b><br />';
             open(url);
         });
     });
