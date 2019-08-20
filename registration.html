@@ -18,8 +18,8 @@
             <div class="main">
                 <div id="logo-placeholder"></div>
                 <div id="form" class="text">
+                    <form onsubmit='return false;'>
                     <table>
-                        <form onsubmit='return false;'>
                             <tr class="form-group">
                                 <td><label for="name">Name</label></td>
                                 <td><input type="text" class="form-control" id="name" placeholder="Name"></td>
@@ -52,8 +52,12 @@
                                 <label class="form-check-label" for="dinner">Staying for dinner</label><p> </p></td>
                             </tr>
                             <tr class="form-group">
-                                <td><label for="name">Dietary restrictions</label></td>
+                                <td><label for="dietary">Dietary restrictions</label></td>
                                 <td><input type="text" class="form-control" id="dietary" placeholder="vegetarian, halal, etc"><br /></td>
+                            </tr>
+                            <tr class="form-group">
+                                <td><label for="remarks">Remarks</label></td>
+                                <td><input type="text" class="form-control" id="remarks" /></td>
                             </tr>
                             <tr class="form-group">
                                 <td></td>
@@ -65,50 +69,6 @@
             </div>
         </div>
         <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script language="javascript">
-        $().ready(function () {
-        $('form').on('submit', function () {
-        const registration_fee = 25;
-        const dinner_fee = 30;
-        const min_fee = 0.01;
-        let formObject = {};
-        let amount = registration_fee;
-        $('form *').each(function (i, d) {
-        if (d.id) {
-        if (d.id === 'dinner') {
-        if (d.checked) {
-        amount += dinner_fee;
-        formObject[d.id] = 'yes';
-        } else {
-        formObject[d.id] = 'no';
-        }
-        } else if (d.id === 'siks') {
-        if (d.checked) {
-        amount -= registration_fee;
-        formObject[d.id] = 'yes';
-        } else {
-        formObject[d.id] = 'no';
-        }
-        } else if (d.id === 'sponsor') {
-        if (d.checked) {
-        amount -= registration_fee;
-        formObject[d.id] = 'yes';
-        } else {
-        formObject[d.id] = 'no';
-        }
-        } else {
-        formObject[d.id] = d.value;
-        }
-        }
-        });
-        amount = amount <= min_fee ? min_fee : amount;
-        formObject['amount'] = amount;
-        const encoded = btoa(JSON.stringify(formObject));
-        const url = 'https://bunq.me/DIR2019/' + amount + '/Pay%20to%20register%20' + encoded;
-        $('form button')[0].outerHTML = '<b>Pay with <a href="' + url + '">Bunq</a>.</b>';
-        open(url);
-        });
-        });
-        </script>
+        <script type="text/javascript">$().ready(function(){$("form").on("submit",function(){let i={},e=30;$("form *").each(function(n,o){o.id&&("dinner"===o.id?o.checked?(e+=35,i[o.id]="yes"):i[o.id]="no":"siks"===o.id?o.checked?(e-=30,i[o.id]="yes"):i[o.id]="no":"sponsor"===o.id?o.checked?(e-=30,i[o.id]="yes"):i[o.id]="no":i[o.id]=o.value)}),e=e<=.01?.01:e,i.amount=e;const n=btoa(JSON.stringify(i)),o="https://bunq.me/DIR2019/"+e+"/Pay%20to%20register%20"+n;$("form button")[0].outerHTML='<b>Pay with <a href="'+o+'">Bunq</a>.</b>',open(o)})});</script>
     </body>
 </html>
