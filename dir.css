@@ -18,6 +18,48 @@ a {
 	font-weight: bolder;
 }
 
+#form {
+	padding: 1em 0;
+}
+
+.form-group {
+	padding-bottom: .5em;
+	text-align: right;
+}
+
+.form-check {
+	text-align: left;
+	padding-bottom: 1em;
+}
+
+input[type=text], input[type=email] {
+    padding: .25em .5em;
+    padding-left: .5em;
+    font-size: 1em;
+    border: 3px solid black;
+    font-family: monospace;
+    width:90%;
+}
+
+button.btn {
+  margin-top: .5em;
+  border: 5px solid red;
+  background: white;
+  color: black;
+  font-weight: bold;
+  padding: .1em .25em;
+  text-align: center;
+  display: inline-block;
+  font-size: .9em;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+button.btn:hover {
+	color: red;
+  	border: 5px solid black;
+}
+
 .pad-right {
 	padding-right:2vw;
 }
@@ -63,6 +105,23 @@ a:hover {
 #block {
 	border-bottom: 10px solid #ff0000;
 	padding:.5em 2em;
+}
+
+#form {
+	border-bottom: 10px solid #ff0000;
+	padding:.5em 2em;
+	text-align: left;
+}
+
+#form .text {
+	text-align: left;
+	font-size: 9px;
+	margin:0 auto;
+}
+
+
+.small{
+	font-size: 10px;
 }
 
 .sponsors {
