@@ -25,11 +25,23 @@
                             </tr>
                             <tr class="form-group">
                                 <td><label for="inputEmail">Email address</label></td>
-                                <td id="email">
+                                <td id="inputEmail">
                             </tr>
                             <tr class="form-group">
                                 <td>Registration type</td>
                                 <td id="registrationType"></td>
+                            </tr>
+                            <tr class="form-group">
+                                <td>Registration</td>
+                                <td>€ <span id="registration" /></td>
+                            </tr>
+                            <tr class="form-group" id="dinnerRow">
+                                <td>Dinner</td>
+                                <td>€ 35,-</td>
+                            </tr>
+                            <tr class="form-group">
+                                <td>Total amount</td>
+                                <td>€ <span id="amount" /></td>
                             </tr>
                         </table>
                     </form>
@@ -40,6 +52,14 @@
         <script type="text/javascript">
             $(function () {
                 $("#logo-placeholder").load("logo.html");
+
+                var form = JSON.parse(atob(location.hash.substr(1)));
+                form['registration'] = form['amount'] - (form['dinner'] == 'yes' ? 35 : 0);
+                $.each(form, function (k, v) { $('#' + k).html(v); });
+                
+                $('#registrationType').html(form['siks'] == 'yes' ? 'SIKS' : (form['sponsor'] == 'yes' ? 'Sponsor' : 'Regular'));
+                if(form['dinner'] != 'yes')
+                    $('#dinnerRow').remove();
             });
         </script>
     </body>
