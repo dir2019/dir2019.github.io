@@ -11,7 +11,28 @@
     <body>
         <div id="content">
             <div class="main">
-                <div id="logo-placeholder"></div>
+<div id="block">
+	<div class="logo">
+		<span class="pad-right">DIR</span>
+		<span class="img"><img src="img/lightning.svg" /></span>
+		<span class="pad-left">19</span>
+	</div>
+</div>
+                <div class="text">
+                        <pre>Werkgemeenschap Informatiewetenschap
+Koningin Julianalaan 2
+6571 AR Berg en Dal
+
+KvK nummer: 40538473
+Bank: Bunq
+IBAN: NL02BUNQ2035240352
+BIC: BUNQNL2AXXX
+
+Telefoon: +31615120063
+Email: dir2019@graus.nu
+Website: http://dir2019.nl</pre>
+                    </div>
+                <h1>Invoice</h1>
                 <div id="form" class="text">
                     <form onsubmit='return false;'>
                     <table>
@@ -37,14 +58,15 @@
                             </tr>
                             <tr class="form-group" id="dinnerRow">
                                 <td>Dinner</td>
-                                <td>€ 35.00/td>
+                                <td>€ 35.00</td>
                             </tr>
                             <tr class="form-group">
-                                <td>Total amount</td>
-                                <td>€ <span id="amount" /></td>
+                                <td id="total"><strong>Total amount</strong></td>
+                                <td id="total"><strong>€ <span id="amount" /></strong></td>
                             </tr>
                         </table>
                     </form>
+
                 </div>
             </div>
         </div>

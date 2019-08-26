@@ -113,6 +113,10 @@ a:hover {
 	text-align: left;
 }
 
+#total {
+	border-top: 2px solid #ff0000;
+}
+
 #form .text {
 	text-align: left;
 	font-size: 9px;
