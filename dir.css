@@ -113,12 +113,30 @@ a:hover {
 	text-align: left;
 }
 
+#total {
+  padding-top: .75em;
+	border-top: 4px solid #ff0000;
+}
+
 #form .text {
 	text-align: left;
 	font-size: 9px;
 	margin:0 auto;
 }
 
+table {
+	font-size: .8em;
+}
+
+table tr td.left {
+	vertical-align: top;
+	padding-right: 3em;
+	font-weight: bold;
+}
+
+table tr td.right {
+	padding-bottom: 1em;
+}
 
 .small{
 	font-size: 10px;

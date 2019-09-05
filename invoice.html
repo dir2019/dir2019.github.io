@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="./dir.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='favicon.png'/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <title>DIR 2019 ⚡ Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</title>
+    </head>
+    <body>
+        <div id="content">
+            <div class="main" style="padding-top: 0;">
+<div id="block">
+    <div class="logo">
+        <span class="pad-right">DIR</span>
+        <span class="img"><img src="img/lightning.svg" /></span>
+        <span class="pad-left">19</span>
+    </div>
+</div>
+                <div class="text">
+                        <pre style="font-size: .8em">Werkgemeenschap Informatiewetenschap
+Koningin Julianalaan 2
+6571 AR Berg en Dal
+
+KvK: 40538473
+Bank: Bunq
+IBAN: NL02BUNQ2035240352
+BIC: BUNQNL2AXXX
+
+Phone number: +31615120063
+Email: dir2019@graus.nu
+Website: http://dir2019.nl</pre>
+                    </div>
+                <h2>Invoice</h2>
+                <div id="form" class="text">
+                    <form onsubmit='return false;'>
+                    <table>
+                            <tr class="form-group">
+                                <td class="left"><label for="name">Name</label></td>
+                                <td class="right" id="name"></td>
+                            </tr>
+                            <tr class="form-group">
+                                <td class="left"><label for="name">Affiliation</label></td>
+                                <td class="right" id="affiliation"></td>
+                            </tr>
+                            <tr class="form-group">
+                                <td class="left"><label for="inputEmail">Email address</label></td>
+                                <td class="right" id="inputEmail">
+                            </tr>
+                            <tr class="form-group">
+                                <td class="left">Registration type</td>
+                                <td class="right" id="registrationType"></td>
+                            </tr>
+                            <tr class="form-group">
+                                <td class="left">Registration</td>
+                                <td class="right">€ <span id="registration" /></td>
+                            </tr>
+                            <tr class="form-group" id="dinnerRow">
+                                <td class="left">Dinner</td>
+                                <td class="right">€ 35.00</td>
+                            </tr>
+                            <tr class="form-group">
+                                <td id="total"><strong>Total amount</strong></td>
+                                <td id="total"><strong>€ <span id="amount" /></strong></td>
+                            </tr>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#logo-placeholder").load("logo.html");
+
+                var form = JSON.parse(atob(location.hash.substr(1)));
+                form['registration'] = form['amount'] - (form['dinner'] == 'yes' ? 35 : 0);
+                $.each(form, function (k, v) { $('#' + k).html(v); });
+                
+                $('#registrationType').html(form['siks'] == 'yes' ? 'SIKS' : (form['sponsor'] == 'yes' ? 'Sponsor' : 'Regular'));
+                if(form['dinner'] != 'yes')
+                    $('#dinnerRow').remove();
+            });
+        </script>
+    </body>
+</html>
+
