@@ -80,7 +80,7 @@ a:hover {
 }
 
 #content .main {
-	padding-top: 3em;
+	padding-top: 1.5em;
 }
 
 #content .logo {
@@ -156,7 +156,6 @@ table tr td.right {
 	padding: 0;
 	margin: 0 auto;
 	width: 70%;
-	background: white;
 	padding: .25em 0;
 	border-bottom: 10px solid red;
 }
@@ -188,7 +187,6 @@ ul#horizontal li, ul#nav li {
 	max-height: 100px;
 	padding: 1em 2em;
 }
-
 
 ul li {
 	font-size: calc(10px + 1.25vw);
