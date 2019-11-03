@@ -153,6 +153,7 @@ table tr td.right {
 
 #nav-placeholder {
 	position: fixed;
+  background: white;
 	padding: 0;
 	margin: 0 auto;
 	width: 70%;
