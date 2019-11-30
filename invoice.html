@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <link href="./dir.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel='shortcut icon' type='image/x-icon' href='favicon.png'/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <title>DIR 2019 ⚡ Lightning Talk Edition ⚡ November 29, 2019 ⚡ Amsterdam</title>
+        <title>DIR2019-invoice</title>
     </head>
     <body>
         <div id="content">
@@ -74,7 +74,6 @@ Website: http://dir2019.nl</pre>
         <script type="text/javascript">
             $(function () {
                 $("#logo-placeholder").load("logo.html");
-
                 var form = JSON.parse(atob(location.hash.substr(1)));
                 form['registration'] = form['amount'] - (form['dinner'] == 'yes' ? 35 : 0);
                 $.each(form, function (k, v) { $('#' + k).html(v); });
